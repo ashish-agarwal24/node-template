@@ -12,8 +12,8 @@ exports.register = function (userObject) {
         if (!user) {
             return User.create(userObject);
         }
-        return Promise.reject(new Error("User Exists With Same Email"))
-    })
+        return Promise.reject(new Error('User Exists With Same Email'));
+    });
 };
 
 exports.authenticate = function (userDetails, deviceToken) {
@@ -21,7 +21,7 @@ exports.authenticate = function (userDetails, deviceToken) {
         email: userDetails.email
     }).then(function (user) {
         if (!user) {
-            return Promise.reject(new Error("User Not Found"))
+            return Promise.reject(new Error('User Not Found'));
         }
         if (user.authenticate(userDetails.password)) {
             if (deviceToken) {
@@ -29,7 +29,7 @@ exports.authenticate = function (userDetails, deviceToken) {
             }
             return user;
         } else {
-            return Promise.reject(new Error("Invalid Password"))
+            return Promise.reject(new Error('Invalid Password'));
         }
     });
 };
@@ -44,29 +44,29 @@ exports.updateProfile = function (id, user) {
     }, user, {
         runValidators: true,
         new: true
-    })
+    });
 };
 
 exports.getUsers = function (query) {
     return User.find(query);
-}
+};
 
 exports.getUserById = function (id) {
     return User.findById(id);
-}
+};
 
 exports.logout = function (userId, deviceToken) {
     if (deviceToken) {
         return User.findById(userId)
             .then(function (user) {
-                user.devicetokens.pull(deviceToken)
+                user.devicetokens.pull(deviceToken);
                 return user.save();
             }).catch(function (err) {
                 return Promise.reject(err);
-            })
+            });
     } else {
         return Promise.resolve({
             result: true
         });
     }
-}
+};

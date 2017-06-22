@@ -47,22 +47,22 @@ exports.verifyToken = function (token) {
     return new Promise(function (resolve, reject) {
         jwt.verify(token, config.jwtSecret, function (err, decoded) {
             if (err) {
-                return reject(err)
+                return reject(err);
             }
             decoded._id = CryptoService.decrypt(decoded._id);
             return resolve(decoded);
         });
-    })
-}
+    });
+};
 
 exports.verifyRefreshToken = function (token) {
     return new Promise(function (resolve, reject) {
         jwt.verify(token, config.jwtRefreshSecret, function (err, decoded) {
             if (err) {
-                return reject(err)
+                return reject(err);
             }
             decoded._id = CryptoService.decrypt(decoded._id);
             return resolve(decoded);
         });
-    })
-}
+    });
+};

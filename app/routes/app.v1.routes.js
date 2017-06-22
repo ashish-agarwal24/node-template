@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 var userController = require('../contollers/user.server.controller');
 var middlewares = require('../middlewares/authorization');
@@ -7,7 +7,7 @@ var app = require('express').Router();
 
 var uploadService = require('../services/upload.service');
 
-app.post('/register', uploadService.uploadFileToS3.single("profilePicture"), userController.registerUser);
+app.post('/register', uploadService.uploadFileToS3.single('profilePicture'), userController.registerUser);
 
 // app.post('/login', userController.authenticate);
 //

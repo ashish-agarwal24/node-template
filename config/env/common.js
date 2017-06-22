@@ -5,14 +5,14 @@ module.exports = {
     root: rootPath,
     port: process.env.PORT || 3000,
     db: process.env.MONGODB_URL || process.env.MONGOLAB_URI || process.env.MONGOHQ_URL,
-    jwtSecret: "",
-    jwtRefreshSecret: "",
+    jwtSecret: '',
+    jwtRefreshSecret: '',
     refreshExpiry: '',
-    CRYPTOKEY: "",
+    CRYPTOKEY: '',
     authExpiry: '',
     s3: { // Amazon s3 Bucket configurations
-        accessKeyId: "",
-        secretAccessKey: "",
+        accessKeyId: '',
+        secretAccessKey: '',
         Bucket: ''
     },
 };
